@@ -1,0 +1,245 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F8F5F2;
+    color: #F8F5F2;
+    margin: 0;
+
+}
+
+
+header{
+    background-color: #2E3A2F;
+    text-align: center;
+    padding: 30px 20px;             /* arriba, abajo 30 a los lados 20. */
+
+
+}
+
+header h1{
+    font-size: 50px;
+    margin-bottom: 25px;
+
+}
+
+
+nav{
+    background-color: #F8F5F2;
+    border: 2px solid #D4AF37;
+    border-radius: 12px;
+    padding: 15px;
+    margin: auto;
+    width: 85%;
+
+}
+
+nav ul{
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+nav ul li{
+    display: inline;
+    margin: 20px;
+    border-radius: 8px;
+
+}
+
+nav ul li a{
+    color: #2E3A2F;
+    text-decoration: none;
+    font-size: 20px;
+
+
+}
+
+nav ul li a:hover{
+    color: #D4AF37;
+}
+
+
+section{
+    text-align: center;
+    padding: 20px;
+
+}
+
+
+
+.slider{
+    width: 800px;
+    margin: auto;
+    position: relative;
+
+}
+
+
+.imagenes img{
+    max-width: 800px;
+    height: 450px;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 20px;
+    object-fit: cover;
+
+}
+
+
+button{
+    width: 30%;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.slider-buttons{
+    padding: 30px;
+
+}
+
+.prev{
+    background-color: #A87D2D;
+    color: #F8F5F2;
+
+}
+
+.next{
+    background-color: #A87D2D;
+    color: #F8F5F2;
+}
+
+
+.historia-texto{
+
+    background: white;
+    border-radius: 15px;
+    color: #2C2C2C;
+    padding: 30px;
+    margin: 40px auto;
+    width: 80%;
+
+}
+
+
+.historia-texto h2{
+    color: #2E3A2F;
+    margin-bottom: 20px;
+
+}
+
+.historia-texto p{
+    color: #2C2C2C;
+    text-align: justify;
+    line-height: 1.5;
+    font-size: 20px;
+
+}
+
+
+label{
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+
+select{
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: 2px solid #A87D2D;
+    margin-top: 15px;
+    cursor: pointer;
+
+}
+
+
+button:hover{
+    background: #8B6914;
+    transition: .3s;
+
+}
+
+
+.contacto-card{
+    background: white;
+    width: 400px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #A87D2D;
+
+}
+
+
+.contacto-card p{
+    color: #2C2C2C;
+    font-weight: bold;
+
+}
+
+.contacto-card a{
+    text-decoration: none;
+    color: #A87D2D;
+
+}
+
+.contacto-card a:hover{
+    color: #2E3A2F;
+
+}
+
+
+
+@media (max-width:768px){
+
+    nav ul li{
+        display: inline;
+        margin: 20px;
+    }
+
+    .slider{
+        width:95%;
+    }
+
+    .imagenes img{
+        height:250px;
+    }
+
+    button{
+        width:45%;
+    }
+
+    .historia-texto{
+        width:90%;
+        margin:30px auto;
+    }
+
+    .contacto-card{
+        width:90%;
+    }
+
+}
+
+
+
+
+footer{
+    background-color: #1F2520;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-top: 4px solid #D4AF37;              /* Para crea una linea dorada arriba del footer */
+
+}
+
+
+footer p{
+    margin: 5px;
+    font-size: 20px;
+    color: white;
+    
+}

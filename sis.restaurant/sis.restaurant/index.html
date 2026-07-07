@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sazu Restaurant</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Sazu Restaurant</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#interactivemenu">Menu</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+
+            </ul>
+        </nav>
+
+        <section id="historia">
+            <h2>Nuestra Historia</h2>
+
+            <div class="slider">
+
+                <div class="imagenes">
+
+                    <img src="img/foto1.webp" alt="foto1" class="slider active">
+                    <img src="img/foto2.jpg" alt="foto2" class="slider active">
+                    <img src="img/foto3.avif" alt="foto3" class="slider active">
+                    <img src="img/foto4.jpg" alt="foto4" class="slider active">
+                    <img src="img/foto5.webp" alt="foto5" class="slider active">
+
+                </div>
+
+                <div class="slider-buttons">
+
+                    <button class="prev">Anterior</button>
+                    <button class="next">Siguiente</button>
+
+                </div>
+            </div>
+
+            <div class="historia-texto">
+                <h2>Una Experiencia para Recordar</h2>
+
+                <p>
+                    Sazu Restaurant nació con el objetivo de ofrecer una experiencia gastronómica
+                    única, combinando recetas tradicionales con ingredientes frescos y de alta
+                    calidad. Desde su apertura, ha buscado convertirse en un lugar especial para
+                    compartir momentos inolvidables con familiares y amigos.
+                </p>
+
+                <p>
+                    Nuestra filosofía gastronómica se basa en la pasión por la cocina, el respeto
+                    por los ingredientes y la dedicación en cada plato. Creemos que una excelente
+                    atención al cliente y un ambiente acogedor son tan importantes como el sabor
+                    de cada preparación.
+                </p>
+
+                <p>
+                    Con el paso de los años, Sazu Restaurant ha evolucionado incorporando nuevas
+                    propuestas culinarias y mejorando continuamente sus servicios. Nuestro
+                    compromiso es seguir innovando sin perder la esencia que nos caracteriza,
+                    ofreciendo siempre una experiencia memorable a cada visitante.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section id="interactivemenu">
+            <h2>Menu Interactivo</h2>
+
+            <label>Selecciona el Tipo de Menu</label> <br>
+
+            <select id="tipomenu">
+
+                <option value="desayuno">Desayuno</option>
+                <option value="almuerzo">Almuerzo</option>
+                <option value="cena">Cena</option>
+
+            </select>
+
+        </section>
+
+        <section id="contacto">
+            <h2>Contactanos</h2>
+
+            <div class="contacto-card">
+
+                <p>Email: <a href="mailto:contacto@sazurestaurant.com">contacto@sazurestaurant.com</a></p>
+                <p>Telefono: <a href="tel: +593 961360888">+593 961360888</a></p>
+                <p>Direccion: <a href="address">Guayaquil & Ilinizas</a></p>
+
+            </div>
+        </section>
+
+
+        <script>
+
+const imagenes = document.querySelectorAll(".imagenes img");
+const btnAnterior = document.querySelector(".prev");
+const btnSiguiente = document.querySelector(".next");
+
+let indice = 0;
+
+function mostrarImagen() {
+
+    imagenes.forEach(function(imagen){
+        imagen.style.display = "none";
+    });
+
+    imagenes[indice].style.display = "block";
+}
+
+mostrarImagen();
+
+btnSiguiente.addEventListener("click", function(){
+
+    indice++;
+
+    if(indice >= imagenes.length){
+        indice = 0;
+    }
+
+    mostrarImagen();
+
+});
+
+btnAnterior.addEventListener("click", function(){
+
+    indice--;
+
+    if(indice < 0){
+        indice = imagenes.length - 1;
+    }
+
+    mostrarImagen();
+
+});
+
+</script>
+
+
+
+    </header>
+
+    <footer>
+
+        <p>© 2026 Página Restaurante</p>
+        <p>Carrera de Desarrollo de Software PUCE TEC</p>
+
+    </footer>
+
+    
+</body>
+</html>
