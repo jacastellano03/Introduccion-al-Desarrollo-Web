@@ -1,0 +1,72 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    margin: 0;
+    min-height: 100vh;              /* Hace que el body ocupe toda la pantalla. */
+
+}
+
+/* Imagen principal del formulario. */
+
+img{
+    width: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.container{
+    padding: 30px;
+    border: 1px solid black;            /* esquinas más suaves. */
+    border-radius: 10px;
+    width: 500px;                       /* un poco más ancho. */
+    box-shadow: 5 5 15px gray;          /* sombra más visible. */
+    margin-top: 20px;
+    background-color: antiquewhite;
+    
+}
+
+input,
+textarea,
+select{
+    width: 100%;
+    padding: 8px;                   /* más cómodo para escribir. */
+    margin-top: 5px;               
+    margin-bottom: 15px;            /* separación entre campos. */
+    box-sizing: border-box;
+}
+
+
+h1{
+    text-align: center;
+    color: #5a3d2b;
+}
+
+h2,
+h3{
+    color:#7a5230 ;
+}
+
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: #d6a87c ;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+button:hover{                               /* [ Enviar ] ← cambia de color */
+    background-color:#c58f5e ;
+}
+
+
+label{
+    font-weight: bold;
+}
+

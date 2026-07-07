@@ -1,0 +1,79 @@
+<!DOCTYPE html>             <!“Este archivo está escrito en HTML5” Siempre va al inicio.!>
+<html lang="es">        <!indica el idioma!>
+
+<head>      <! Aquí van configuraciones de la página.!>
+
+    <meta charset="UTF-8">      <!Permite usar caracteres especiales ñ, tildes, símbolos!>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">      <! Hace que la página se adapte a teléfonos y tablets.!>
+    <link rel="stylesheet" href="style.css">
+    <title>Formulario de contacto</title>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <img src="img/form.png" alt="Imagen de Formulario">
+
+        <h1>Formulario de contacto</h1>         <!-- Es el título principal -->
+
+        <h2>Datos personales</h2>               <!Es un subtítulo.!>
+
+        <p>Complete todos los campos solicitados</p>    <!Es un parrafo!>
+
+        <h3>Información de contacto</h3>        <!Es un subtítulo de menor importancia.!>
+
+        <form action="procesar.php" method="post">
+
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required> <br><br>
+
+            <label for="correo">Correo Electrónico:</label><br>
+            <input type="email" id="correo" name="correo" required> <br><br>
+
+            <label for="telefono">Teléfono:</label><br>
+            <input type="tel" id="telefono" name="telefono" required> <br><br>
+
+            <label for="mensaje">Mensaje:</label><br>
+
+            <textarea id="mensaje" name="mensaje" required></textarea> 
+            
+            <br><br>
+
+            <label for="pais">País:</label>
+
+            <select name="pais" id="pais">
+
+                <option>Ecuador</option>
+                <option>Colombia</option>
+                <option>Brasil</option>
+                <option>Argentina</option>
+
+            </select>
+
+            <br><br>
+
+            <label for="genero">Género:</label>
+
+            <select name="genero" id="genero">
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>Otro</option>
+            </select>
+
+            <br><br>   <!hcae el salto de linea para el boton!>
+
+
+            <button type= "submit">Enviar</button>
+
+
+        </form>
+
+
+    </div>
+    
+</body>
+
+</html>
