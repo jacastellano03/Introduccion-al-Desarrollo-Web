@@ -1,0 +1,126 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    margin: 0;
+    padding: 20px;
+}
+
+.container{
+    width: 500px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+
+}
+
+.imagen-superior{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: black;
+}
+
+
+label{
+    /*Negrita*/
+    font-weight: bold;
+    /*Ocupa todo el espacio de la linea*/
+    display: block;
+
+    margin-top: 15px;
+}
+
+input,
+select,
+textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+}
+
+textarea{
+    resize: vertical;
+}
+
+.botones{
+    margin: 40px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+button{
+    width: 48%;                     /*verificar las diferencias entre px y % */
+    padding: 12px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.Enviar{
+    background-color: blue;
+    color: white;
+
+}
+
+.Enviar:hover{
+    background-color: greenyellow;
+    
+}
+
+
+.Limpiar{
+    background-color: red;
+    color: white;
+
+}
+
+.Limpiar:hover{
+    background-color: rgb(94, 21, 21);
+
+}
+
+
+.icono{
+
+    width: 18px;
+
+    height: 18px;
+
+    vertical-align: middle;
+
+    margin-right: 5px;
+}
+
+
+input[type="checkbox"]{             /*solo los checkbox tendrán tamaño normal*/
+    width: auto;
+
+    transform: scale(1.2);
+}
+
+
+input[type="radio"]{
+    width: auto;
+
+    transform: scale(1.2);
+}

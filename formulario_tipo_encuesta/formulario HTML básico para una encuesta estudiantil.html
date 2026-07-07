@@ -1,0 +1,172 @@
+<!DOCTYPE html>             <!“Este archivo está escrito en HTML5” Siempre va al inicio.!>
+<html lang="es">        <!indica el idioma!>
+
+<head>      <! Aquí van configuraciones de la página.!>
+
+    <meta charset="UTF-8">      <!Permite usar caracteres especiales ñ, tildes, símbolos!>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">      <! Hace que la página se adapte a teléfonos y tablets.!>
+    <link rel="stylesheet" href="style_formulario.css">
+    <title>Formulario</title>
+
+</head>
+
+<body>      <! Aquí va TODO lo visible de la página.!>
+
+    <div class="container">     <! Es una caja o contenedor. Se usa para organizar elementos.!>
+        <img src="img/estudiante.jpg" alt="Estudiante" class="imagen-superior">
+        <h1>Encuesta Estudiantil</h1>           <!Es un encabezado grande. hay otros mas como h, h2, h3 etc!>
+
+        <form>      <!Todo lo que esté dentro pertenece al formulario.!>
+
+                <!for="nombre" Conecta el label con el input que tiene!>
+            <label for="name">
+                
+                <img src="img/user.jpg" class="icono">
+
+                Nombres Completos:
+            
+            </label>            <!Muestra el texto descriptivo del campo.!>
+
+
+
+            
+            <input type="text" required> 
+            <id ="name" placeholder="Ingrese su Nombre">       <!type="text" Campo para escribir texto. id="nombre" Identificador único. Sirve para: conectar labels usar CSS usar JavaScript!>
+                                                                                 <! placeholder Texto gris de ejemplo.!>
+                        
+            
+            <label for="edad">
+
+                <img src="img/age.jpg" class="icono">
+
+                Ingrese su edad:
+            
+            </label>
+
+            <input type="number" required> 
+            <id="edad" placeholder="Ingrese su edad">      <! type="number" Solo permite números.!>
+
+            <br>        <! Hace un salto de línea. Como presionar ENTER.!>
+
+            
+            
+            
+            <label for="Carrera">
+
+                <img src="img/carrera.png" class="icono">
+
+                Carrera: 
+            
+            </label>
+
+            <select id="Carrera">
+
+                <option>Desarrollo de Software</option>
+                <option>Sistemas Operativos</option>
+                <option>Ingeniero en Sistemas</option>
+                <option>Administracion de Empresas</option>
+                <option>Enfermeria</option>
+
+            </select>
+
+
+
+
+            <label for="Horario de Estudio">
+
+                <img src="img/horario.jpg" class="icono">
+                
+                Horario de Estudio
+            
+            </label>
+
+            <select id="Horario de Estudio">
+                <option>Mañana</option>
+                <option>Tarde</option>
+                <option>Nocturno</option>
+
+            </select>
+
+
+
+
+            <label>Materias Favoritas</label>
+
+            <input type="checkbox">Programacion         <!¿Qué es un checkbox? Es una casilla que permite seleccionar: ✅ varias opciones al mismo tiempo.!>
+
+            <br>
+
+            <input type="checkbox" required>Redes
+
+            <br>
+
+            <input type="checkbox">Base de Datos
+
+
+            <br>
+            <br>
+
+            <label>Modalidad de Estudio</label>
+
+            <input type="radio" name="Modalidad"> Presencial      <! Permite seleccionar SOLO UNA. opcion!>
+
+            <br>
+
+            <input type="radio" name="Modalidad"required> Virtual    <!Es suficiente con un required Porque todos tienen el mismo: name="modalidad"!>
+
+
+            <br>
+
+            <input type="radio" name="Modalidad"> Híbrida
+
+            
+
+
+
+            <label for="Ciudad">
+
+                <img src="img/city.jpg" class="icono">
+
+                Ciudad
+            
+            </label>
+
+            <select id="Ciudad">
+                <option>Quito</option>
+                <option>Latacunga</option>
+                <option>Cuenca</option>
+                <option>Ambato</option>
+                <option>Manta</option>
+                <option>Guayaquil</option>
+
+            </select>
+
+
+            <br>        <! Hace un salto de línea. Como presionar ENTER.!>
+
+
+
+            <label for="comentario">
+
+                <img src="img/comentario.png" class="icono">
+
+                Comentario: 
+            
+            </label>
+
+
+            <textarea id="comentario" rows="5" placeholder="Escriba un comentario" required></textarea>
+
+            <div class="botones"> <! Otro contenedor para organizar los botones.!>
+                <button class="Enviar" type="submit">Enviar</button>        <! Botón enviar !>
+                <button class="Limpiar" type="reset">Limpiar</button>       <! Botón enviar, Borra todos los campos automáticamente.!>
+
+            </div>  
+
+        </form>
+
+    </div>
+    
+</body>
+
+
