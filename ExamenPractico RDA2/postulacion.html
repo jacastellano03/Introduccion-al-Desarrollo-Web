@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postulación</title>
+    <link rel="stylesheet" href="stylepostulacion.css">
+</head>
+
+<body>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="jugadores.html">Jugadores</a></li>
+            <li><a href="paises.html">Países</a></li>
+            <li><a href="postulacion.html">Postulación</a></li>
+
+        </ul>
+
+    </nav>
+
+    <h1>Formulario de Postulación</h1>
+
+    <form action="enviado.html">
+
+        <label>Nombre completo</label><br>
+        <input type="text" required><br><br>
+
+        <label>Edad</label><br>
+        <input type="number" required><br><br>
+
+        <label>Correo electrónico</label><br>
+        <input type="email" required><br><br>
+
+        <label>Teléfono</label><br>
+        <input type="tel" required><br><br>
+
+        <label>Fecha de nacimiento</label><br>
+        <input type="date" required><br><br>
+
+        <label>Ciudad</label><br>
+        <input type="text" required><br><br>
+
+        <h2>Información deportiva</h2>
+
+        <label>País al que desea postularse</label><br>
+
+        <select required>
+
+            <option>Argentina</option>
+            <option>Brasil</option>
+            <option>España</option>
+            <option>Francia</option>
+            <option>Alemania</option>
+            <option>Portugal</option>
+            <option>Ecuador</option>
+            <option>Italia</option>
+            <option>Inglaterra</option>
+            <option>Uruguay</option>
+
+        </select>
+
+        <br><br>
+
+        <label>Posición favorita</label><br><br>
+
+            <input type="radio" name="posicion"> Delantero Centro <br>
+            <input type="radio" name="posicion"> Extremo Derecho <br>
+            <input type="radio" name="posicion"> Extremo Izquierdo <br>
+            <input type="radio" name="posicion"> Segundo Delantero
+
+            <br><br>
+
+        <label>Pierna dominante</label><br><br>
+
+            <input type="radio" name="pierna"> Derecha <br>
+            <input type="radio" name="pierna"> Izquierda <br>
+            <input type="radio" name="pierna"> Ambas
+
+        <br><br>
+
+        <label>Experiencia</label><br><br>
+
+            <input type="checkbox"> Liga Barrial <br>
+            <input type="checkbox"> Liga Universitaria <br>
+            <input type="checkbox"> Club Profesional <br>
+            <input type="checkbox"> Selección Provincial
+
+        <br><br>
+
+        <label>Altura (cm)</label><br>
+        <input type="number">
+
+        <br><br>
+
+        <label>Peso (kg)</label><br>
+        <input type="number">
+
+        <br><br>
+
+        <label>Color favorito del uniforme</label><br>
+        <input type="text" placeholder="Ejemplo: Azul">
+
+        <br><br>
+
+        <label>Fecha disponible para pruebas</label><br>
+        <input type="text" placeholder="Ejemplo: 15/08/2026">
+
+        <br><br>
+
+        <label>Subir fotografía</label><br>
+        <input type="file">
+
+        <br><br>
+
+        <label>Biografía</label><br>
+        <textarea rows="5"></textarea>
+
+        <br><br>
+
+
+        <input type="reset" value="Limpiar formulario">
+
+        <input type="submit" value="Postularme" formaction="enviado.html">
+
+
+    </form>
+
+
+    <footer>
+
+        <p>© 2026 FIFA World Cup. Todos los derechos reservados.</p>
+
+    </footer>
+
+
+</body>
+</html>
