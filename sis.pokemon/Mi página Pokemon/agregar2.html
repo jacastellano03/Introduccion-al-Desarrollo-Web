@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleagregar2.css">
+    <title>Agregar Pokemon</title>
+</head>
+
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index2.html">Inicio</a></li>
+            <li><a href="pokemon2.html">Ver Pókemon</a></li>
+            <li><a href="agregar2.html">Agregar</a></li>
+
+        </ul>
+    </nav>
+
+    <form action="procesar.php" method="post">
+
+        <label for="Agregar">Agregar Nuevo Pokemon</label> <br>
+        <input type="text" id="nombre" name="nombre" required> <br>
+
+        <br><br>
+        <label for="Tipo">Tipo:</label required>
+            <select name="Tipo" id="">Tipo de Pokemon
+            <option>Agua</option>
+            <option>Fuego</option>
+            <option>Tierra</option>
+            <option>Veneno</option>
+            <option>Electrico</option>
+
+        </select>
+        <br><br>
+
+        <label> URL DE LA IMAGEN
+
+            <input type="text">
+            <br><br>
+
+            <label for="Agregar informacion">Agregar informacion del Pokemon</label><br>
+            <textarea name="Agregar Informacion del Pokemon" id="mensaje" required></textarea>
+            <br><br>
+
+        </label>
+
+
+    </form>
+
+    
+</body>
+</html>
