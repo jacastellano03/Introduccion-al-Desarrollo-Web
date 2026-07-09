@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylomejor.css">
+</head>
+<body>
+    <header>
+        <h1> Bienvenidos al Restaurante Zazu</h1>
+        <nav>
+            <ul>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="historia">
+        <h2>Nuestra Historia</h2>
+        <div class="slider">
+            <img src="imagenes/imagenes/imagen1.jpg" class="slide active" alt="foto1" >
+            <img src="imagenes/imagenes/imagen3.jpg" class="slide" alt="foto2">
+            <img src="imagenes/imagenes/imagen2.jpg" class="slide" alt="foto3">
+            <div class="slide-buttons">
+                <button class="prev">Anterior</button>
+                <button class="next">Siguiente</button>
+
+            </div>
+        </div>
+        <div class="historia-texto">
+            <p>Aqui va la historia del restaurante</p>
+            <p>La historia va a continuar mientras usted continue yendo al restaurante  elegido</p>
+            <p>Han pasao los años y el restaurante mantiene la sazón que tanto le gusta</p>
+
+        </div>
+
+    </section>
+    <section id="menu">
+        <h2>Menú Interactivo</h2>
+        <label >Selecciona tipo de menú</label>
+        <select  id="tipoMenu">
+            <option value="desayuno">   Desayuno</option>
+            <option value="almuerzo">Almuerzo</option>
+            <option value="cena">Cena</option>
+        </select>
+    </section>
+    <section id="Contacto">
+        <h2>Contactanos</h2>
+        <div class="contacto-card">
+            <p>Email <a href="mail: contacto@restaurante.com">contacto@restaurante.com</a></p>
+            <p>Telefono: <a href="tel:0000000 ">00000000000</a></p>
+            <p>Dirección: <a href="av">Floresta</a></p>
+        </div>
+
+    </section>
+    <script>
+    
+const slides = document.querySelectorAll('.slide');
+let indice = 0;
+
+function mostrarSlide(i){
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[i].classList.add('active');
+}
+
+document.querySelector('.next').addEventListener('click', () => {
+    indice++;
+    if(indice >= slides.length){
+        indice = 0;
+    }
+    mostrarSlide(indice);
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+    indice--;
+    if(indice < 0){
+        indice = slides.length - 1;
+    }
+    mostrarSlide(indice);
+});
+mostrarSlide(0);
+
+</script>
+</body>
+</html>
