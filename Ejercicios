@@ -1,0 +1,425 @@
+Ejercicio 1: Calculadora de edades
+
+html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Edades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Calculadora de Edades</h1>
+
+        <label>Nombre</label>
+        <input type="text" id="nombre">
+
+        <label>Año de nacimiento</label>
+        <input type="number" id="anio">
+
+        <button onclick="calcularEdad()">Calcular edad</button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+
+        function calcularEdad(){
+
+            let nombre = document.getElementById("nombre").value;
+            let anio = document.getElementById("anio").value;
+            let edad = 2025 - anio;
+
+            if(nombre == ""){
+
+                alert("Ingrese un nombre");
+
+            }
+
+            else if(anio == "" || anio > 2025){
+
+                alert("Ingrese un año válido");
+
+            }
+
+            else{
+
+                document.getElementById("resultado").innerHTML = "Hola " + nombre + ", tienes " + edad + " años.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+css
+
+body{
+    font-family: Arial;
+    background-color: lightblue;
+}
+
+.contenedor{
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: white;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    color: blue;
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+}
+
+input{
+    width: 290px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+button{
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+button:hover{
+    background-color: darkblue;
+}
+
+#resultado{
+
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+Ejercicio 2: Cambio de tema de una página
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cambio de Tema</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="cuerpo">
+
+    <h1>Cambio de Tema</h1>
+
+    <img src="paisaje.jpg" width="300">
+
+    <p>
+        Esta es una página para cambiar el color del tema utilizando JavaScript.
+    </p>
+
+    <button onclick="claro()">Modo Claro</button>
+    <button onclick="oscuro()">Modo Oscuro</button>
+    <button onclick="azul()">Modo Azul</button>
+
+    <script>
+
+        function claro(){
+
+            document.getElementById("cuerpo").style.backgroundColor = "white";
+            document.getElementById("cuerpo").style.color = "black";
+
+        }
+
+        function oscuro(){
+
+            document.getElementById("cuerpo").style.backgroundColor = "black";
+            document.getElementById("cuerpo").style.color = "white";
+
+        }
+
+        function azul(){
+
+            document.getElementById("cuerpo").style.backgroundColor = "lightblue";
+            document.getElementById("cuerpo").style.color = "darkblue";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+css
+
+body{
+    font-family: Arial;
+    text-align: center;
+    background-color: white;
+}
+
+h1{
+    color: blue;
+}
+
+img{
+    margin: 20px;
+}
+
+button{
+    padding: 10px;
+    margin: 5px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: darkblue;
+}
+
+p{
+    width: 500px;
+    margin: auto;
+}
+
+
+Ejercicio 3: Generador de tarjetas de estudiantes
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Tarjetas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Generador de Tarjetas de Estudiantes</h1>
+
+    <label>Nombre</label><br>
+    <input type="text" id="nombre"><br><br>
+
+    <label>Carrera</label><br>
+    <input type="text" id="carrera"><br><br>
+
+    <label>Edad</label><br>
+    <input type="number" id="edad"><br><br>
+
+    <label>Foto (URL)</label><br>
+    <input type="text" id="foto"><br><br>
+
+    <button onclick="crearTarjeta()">Crear Tarjeta</button>
+
+    <div id="tarjetas"></div>
+
+    <script>
+
+        function crearTarjeta(){
+
+            let nombre = document.getElementById("nombre").value;
+            let carrera = document.getElementById("carrera").value;
+            let edad = document.getElementById("edad").value;
+            let foto = document.getElementById("foto").value;
+
+            document.getElementById("tarjetas").innerHTML +=
+
+            "<div class='tarjeta'>" +
+
+            "<img src='" + foto + "'>" +
+
+            "<h2>" + nombre + "</h2>" +
+
+            "<p>Carrera: " + carrera + "</p>" +
+
+            "<p>Edad: " + edad + "</p>" +
+
+            "</div>";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+css
+
+body{
+    font-family: Arial;
+    text-align: center;
+    background-color: lightblue;
+}
+
+input{
+    width: 250px;
+}
+
+button{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: darkblue;
+}
+
+.tarjeta{
+    width: 250px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.tarjeta:hover{
+    transform: scale(1.05);
+}
+
+img{
+    width: 150px;
+    height: 150px;
+}
+
+
+Ejercicio 4: Sistema de calificaciones
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Calificaciones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Sistema de Calificaciones</h1>
+
+        <label>Nombre del estudiante</label><br>
+        <input type="text" id="nombre"><br><br>
+
+        <label>Nota 1</label><br>
+        <input type="number" id="nota1"><br><br>
+
+        <label>Nota 2</label><br>
+        <input type="number" id="nota2"><br><br>
+
+        <label>Nota 3</label><br>
+        <input type="number" id="nota3"><br><br>
+
+        <button onclick="calcular()">Calcular promedio</button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+
+        function calcular(){
+
+            let nombre = document.getElementById("nombre").value;
+            let nota1 = Number(document.getElementById("nota1").value);
+            let nota2 = Number(document.getElementById("nota2").value);
+            let nota3 = Number(document.getElementById("nota3").value);
+
+            let promedio = (nota1 + nota2 + nota3) / 3;
+
+            if(promedio >= 7){
+
+                document.getElementById("resultado").innerHTML =
+                nombre + "<br>Promedio: " + promedio + "<br>Aprobado";
+
+                document.getElementById("resultado").style.color = "green";
+
+            }
+
+            else{
+
+                document.getElementById("resultado").innerHTML =
+                nombre + "<br>Promedio: " + promedio + "<br>Reprobado";
+
+                document.getElementById("resultado").style.color = "red";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+css
+
+body{
+    font-family: Arial;
+    background-color: lightblue;
+}
+
+.contenedor{
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: white;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    color: blue;
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+}
+
+input{
+    width: 290px;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: darkblue;
+}
+
+#resultado{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
