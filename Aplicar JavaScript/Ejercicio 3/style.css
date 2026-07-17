@@ -1,0 +1,39 @@
+body{
+    font-family: Arial;
+    text-align: center;
+    background-color: lightblue;
+}
+
+input{
+    width: 250px;
+}
+
+button{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: darkblue;
+}
+
+.tarjeta{
+    width: 250px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px gray;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.tarjeta:hover{
+    transform: scale(1.05);
+}
+
+img{
+    width: 150px;
+    height: 150px;
+}

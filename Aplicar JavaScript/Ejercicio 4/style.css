@@ -1,0 +1,38 @@
+body{
+    font-family: Arial;
+    background-color: lightblue;
+}
+
+.contenedor{
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: white;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    color: blue;
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+}
+
+input{
+    width: 290px;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+button:hover{
+    background-color: darkblue;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cambio de Tema</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="cuerpo">
+
+    <h1>Cambio de Tema</h1>
+
+    <img src="img/paisaje.jpg" width="300">
+
+    <p>
+        Esta es una página para cambiar el color del tema utilizando JavaScript.
+    </p>
+
+    <button onclick="claro()">Modo Claro</button>
+    <button onclick="oscuro()">Modo Oscuro</button>
+    <button onclick="azul()">Modo Azul</button>
+
+    <script>
+
+        function claro(){
+
+            document.getElementById("cuerpo").style.backgroundColor = "white";
+            document.getElementById("cuerpo").style.color = "black";
+
+        }
+
+        function oscuro(){
+
+            document.getElementById("cuerpo").style.backgroundColor = "black";
+            document.getElementById("cuerpo").style.color = "white";
+
+        }
+
+        function azul(){
+
+            document.getElementById("cuerpo").style.backgroundColor = "lightblue";
+            document.getElementById("cuerpo").style.color = "darkblue";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

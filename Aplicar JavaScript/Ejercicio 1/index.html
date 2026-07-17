@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Edades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>Calculadora de Edades</h1>
+
+        <label>Nombre</label>
+        <input type="text" id="nombre">
+
+        <label>Año de nacimiento</label>
+        <input type="number" id="año">
+
+        <button onclick="calcularEdad()">Calcular edad</button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+
+        function calcularEdad(){
+
+            let nombre = document.getElementById("nombre").value;
+            let año = document.getElementById("año").value;
+            let edad = 2025 - año;
+
+            if(nombre == ""){
+
+                alert("Ingrese un nombre");
+
+            }
+
+            else if(año == "" || año > 2025){
+
+                alert("Ingrese un año válido");
+
+            }
+
+            else{
+
+                document.getElementById("resultado").innerHTML = "Hola " + nombre + ", tienes " + edad + " años.";
+
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Tarjetas</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <h1>Generador de Tarjetas de Estudiantes</h1>
+
+    <label>Nombre</label><br>
+    <input type="text" id="nombre"><br><br>
+
+    <label>Carrera</label><br>
+    <input type="text" id="carrera"><br><br>
+
+    <label>Edad</label><br>
+    <input type="number" id="edad"><br><br>
+
+    <label>Foto (URL)</label><br>
+    <input type="text" id="foto"><br><br>
+
+    <button onclick="crearTarjeta()">Crear Tarjeta</button>
+
+    <div id="tarjetas"></div>
+
+    <script>
+
+        function crearTarjeta(){
+
+            let nombre = document.getElementById("nombre").value;
+            let carrera = document.getElementById("carrera").value;
+            let edad = document.getElementById("edad").value;
+            let foto = document.getElementById("foto").value;
+
+            document.getElementById("tarjetas").innerHTML +=
+
+            "<div class='tarjeta'>" +
+
+            "<img src='" +  + "'>" +
+
+            "<h2>" + nombre + "</h2>" +
+
+            "<p>Carrera: " + carrera + "</p>" +
+
+            "<p>Edad: " + edad + "</p>" +
+
+            "</div>";
+
+        }
+
+    </script>
+    
+</body>
+</html>

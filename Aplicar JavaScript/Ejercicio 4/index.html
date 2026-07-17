@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de calificaciones Objetivo</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Sistema de Calificaciones</h1>
+
+        <label>Nombre del estudiante</label><br>
+        <input type="text" id="nombre"><br><br>
+
+        <label>Nota 1</label><br>
+        <input type="number" id="nota1"><br><br>
+
+        <label>Nota 2</label><br>
+        <input type="number" id="nota2"><br><br>
+
+        <label>Nota 3</label><br>
+        <input type="number" id="nota3"><br><br>
+
+        <button onclick="calcular()">Calcular promedio</button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+
+        function calcular(){
+
+            let nombre = document.getElementById("nombre").value;
+            let nota1 = Number(document.getElementById("nota1").value);
+            let nota2 = Number(document.getElementById("nota2").value);
+            let nota3 = Number(document.getElementById("nota3").value);
+
+            let promedio = (nota1 + nota2 + nota3) / 3;
+
+            if(promedio >= 7){
+
+                document.getElementById("resultado").innerHTML =
+                nombre + "<br>Promedio: " + promedio + "<br>Aprobado";
+
+                document.getElementById("resultado").style.color = "green";
+
+            }
+
+            else{
+
+                document.getElementById("resultado").innerHTML =
+                nombre + "<br>Promedio: " + promedio + "<br>Reprobado";
+
+                document.getElementById("resultado").style.color = "red";
+
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>
