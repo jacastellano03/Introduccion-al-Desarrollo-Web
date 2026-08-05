@@ -46,7 +46,7 @@ function mostrarPeliculas() {
         if (pelicula.favorita === true) {
 
             nombrePelicula.textContent =
-                nombrePelicula.textContent + " ⭐";
+                nombrePelicula.textContent + " ";
 
         }
 
@@ -64,7 +64,7 @@ function mostrarPeliculas() {
         const botonFavorito = document.createElement("button");
 
         botonFavorito.classList.add("favorito");
-        botonFavorito.textContent = "⭐ Favorito";
+        botonFavorito.textContent = " Favorito";
 
 
         const botonEliminar = document.createElement("button");
