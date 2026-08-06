@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Identificador Provincial de Cédulas</title>
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="titulo">
+            <h1>Identificador Provincial de Cédulas Ecuatorianas</h1>
+            <p>Proyecto Integrador de Primer Nivel</p>
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#problema">Problema</a>
+            <a href="#objetivos">Objetivos</a>
+            <a href="#funcionamiento">Funcionamiento</a>
+            <a href="#provincias">Provincias</a>
+            <a href="#python">Python</a>
+            <a href="#conclusiones">Conclusiones</a>
+        </nav>
+
+    </header>
+
+
+
+    <main>
+
+        <section id="inicio" class="seccion-inicio">
+
+            <div class="contenido-inicio">
+
+                <h2>Sistema de registro e identificación provincial</h2>
+
+                <p>
+                    Este proyecto permite registrar números de cédula
+                    ecuatorianos e identificar la provincia relacionada
+                    con sus dos primeros dígitos.
+                </p>
+
+                <button> Conocer el proyecto </button>
+
+            </div>
+
+        </section>
+
+
+        <section id="problema">
+
+            <h2>Problema identificado</h2>
+
+            <p>
+                Muchas personas desconocen el significado de los dos
+                primeros dígitos de una cédula ecuatoriana y su relación
+                con los códigos provinciales.
+            </p>
+
+            <p>
+                Además, al registrar números de cédula de forma manual
+                pueden presentarse errores como campos vacíos, datos
+                incompletos, letras, códigos provinciales inexistentes
+                o registros repetidos.
+            </p>
+
+            <p>
+                Por esta razón, se propone desarrollar un programa básico
+                que permita registrar, consultar y eliminar cédulas,
+                identificando la provincia correspondiente.
+            </p>
+
+        </section>
+
+
+        <section id="objetivos">
+
+            <h2>Objetivos del proyecto</h2>
+
+            <article>
+
+                <h3>Objetivo general</h3>
+
+                <p>
+                    Desarrollar un sistema básico que permita registrar
+                    números de cédula ecuatorianos e identificar la
+                    provincia relacionada con sus dos primeros dígitos.
+                </p>
+
+            </article>
+
+            <article>
+
+                <h3>Objetivos específicos</h3>
+
+                <ul>
+                    <li>Comprobar que el número ingresado contenga diez dígitos.</li>
+
+                    <li>
+                        Identificar la provincia mediante los dos primeros
+                        dígitos de la cédula.
+                    </li>
+
+                    <li>Registrar y mostrar las cédulas ingresadas.</li>
+
+                    <li>
+                        Evitar que una cédula sea registrada más de una vez.
+                    </li>
+
+                    <li>Permitir la búsqueda y eliminación de registros.</li>
+                </ul>
+
+            </article>
+
+        </section>
+
+
+        <section id="funcionamiento">
+
+            <h2>¿Cómo funciona el sistema?</h2>
+
+            <div class="pasos">
+
+                <article class="paso">
+                    <h3>Paso 1</h3>
+
+                    <p>
+                        El usuario ingresa un número de cédula.
+                    </p>
+                </article>
+
+                <article class="paso">
+                    <h3>Paso 2</h3>
+
+                    <p>
+                        El programa comprueba que el dato tenga
+                        una estructura correcta.
+                    </p>
+                </article>
+
+                <article class="paso">
+                    <h3>Paso 3</h3>
+
+                    <p>
+                        Se obtienen los dos primeros dígitos
+                        de la cédula.
+                    </p>
+                </article>
+
+                <article class="paso">
+                    <h3>Paso 4</h3>
+
+                    <p>
+                        El código es comparado con la lista
+                        de provincias.
+                    </p>
+                </article>
+
+                <article class="paso">
+                    <h3>Paso 5</h3>
+
+                    <p>
+                        La cédula y la provincia son guardadas
+                        en el sistema.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section id="logica">
+
+            <h2>Condiciones lógicas</h2>
+
+            <p>
+                Para registrar una cédula deben cumplirse las
+                siguientes condiciones:
+            </p>
+
+            <ul>
+                <li>El campo no debe estar vacío.</li>
+
+                <li>La cédula debe contener diez dígitos.</li>
+
+                <li>El dato debe estar formado únicamente por números.</li>
+
+                <li>El código provincial debe encontrarse registrado.</li>
+
+                <li>La cédula no debe estar repetida.</li>
+            </ul>
+
+            <div class="formula-logica">
+
+                <p class="formula">
+                    P ∧ Q ∧ R ∧ S ∧ T
+                </p>
+
+                <p>
+                    Todas las condiciones deben ser verdaderas
+                    para guardar el registro.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section id="provincias">
+
+            <h2>Códigos provinciales</h2>
+
+            <p>
+                Los dos primeros dígitos de la cédula son utilizados
+                para identificar el código provincial.
+            </p>
+
+            <button> Mostrar provincias </button>
+
+            <div id="tablaProvincias" class="contenido-provincias">
+
+                <div class="lista-provincias">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Provincia</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>01</td>
+                                <td>Azuay</td>
+                            </tr>
+
+                            <tr>
+                                <td>02</td>
+                                <td>Bolívar</td>
+                            </tr>
+
+                            <tr>
+                                <td>03</td>
+                                <td>Cañar</td>
+                            </tr>
+
+                            <tr>
+                                <td>04</td>
+                                <td>Carchi</td>
+                            </tr>
+
+                            <tr>
+                                <td>05</td>
+                                <td>Cotopaxi</td>
+                            </tr>
+
+                            <tr>
+                                <td>06</td>
+                                <td>Chimborazo</td>
+                            </tr>
+
+                            <tr>
+                                <td>07</td>
+                                <td>El Oro</td>
+                            </tr>
+
+                            <tr>
+                                <td>08</td>
+                                <td>Esmeraldas</td>
+                            </tr>
+
+                            <tr>
+                                <td>09</td>
+                                <td>Guayas</td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>Imbabura</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td>Loja</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td>Los Ríos</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td>Manabí</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td>Morona Santiago</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td>Napo</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td>Pastaza</td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td>Pichincha</td>
+                            </tr>
+
+                            <tr>
+                                <td>18</td>
+                                <td>Tungurahua</td>
+                            </tr>
+
+                            <tr>
+                                <td>19</td>
+                                <td>Zamora Chinchipe</td>
+                            </tr>
+
+                            <tr>
+                                <td>20</td>
+                                <td>Galápagos</td>
+                            </tr>
+
+                            <tr>
+                                <td>21</td>
+                                <td>Sucumbíos</td>
+                            </tr>
+
+                            <tr>
+                                <td>22</td>
+                                <td>Orellana</td>
+                            </tr>
+
+                            <tr>
+                                <td>23</td>
+                                <td>Santo Domingo de los Tsáchilas</td>
+                            </tr>
+
+                            <tr>
+                                <td>24</td>
+                                <td>Santa Elena</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="imagen-provincias">
+
+                    <h3>Mapa provincial del Ecuador</h3>
+
+                    <img src="img/mapa-ecuador.webp"
+                        alt="Mapa del Ecuador con sus provincias enumeradas">
+
+                    <p>
+                        El mapa permite observar la ubicación de las
+                        provincias y relacionarlas con sus respectivos
+                        códigos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="python">
+
+            <h2>Programa desarrollado en Python</h2>
+
+            <p>
+                La parte funcional del proyecto fue desarrollada
+                mediante el lenguaje de programación Python.
+            </p>
+
+            <p>
+                El programa utiliza variables, condicionales, ciclos,
+                listas, diccionarios, funciones y archivos para
+                administrar los registros.
+            </p>
+
+            <div class="funciones-python">
+
+                <article>
+                    <h3>Registrar</h3>
+
+                    <p>
+                        Permite ingresar una nueva cédula e identificar
+                        su provincia.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Consultar</h3>
+
+                    <p>
+                        Muestra las cédulas que se encuentran
+                        registradas.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Buscar</h3>
+
+                    <p>
+                        Permite buscar una cédula específica
+                        dentro del sistema.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Eliminar</h3>
+
+                    <p>
+                        Permite retirar una cédula de los registros.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section id="conclusiones">
+
+            <h2>Conclusiones</h2>
+
+            <p>
+                El proyecto demuestra que es posible integrar conocimientos
+                de comunicación, lógica matemática, programación y
+                desarrollo web en una solución organizada.
+            </p>
+
+            <p>
+                Las validaciones permiten reducir errores durante el ingreso
+                de información, mientras que las funciones facilitan la
+                organización y reutilización del código.
+            </p>
+
+            <p>
+                La página web permite presentar el proyecto de forma clara,
+                mientras que el programa en Python demuestra el funcionamiento
+                práctico del sistema.
+            </p>
+
+        </section>
+
+
+        <section id="integrantes">
+
+            <h2>Integrantes</h2>
+
+            <p>
+                Alejandro Castellano <br>
+                Josue Rivera
+            </p>
+
+            <h3>Asignaturas participantes</h3>
+
+            <ul>
+                <li>Comunicación Oral y Escrita</li>
+                <li>Habilidades Lógico-Matemáticas</li>
+                <li>Fundamentos de Programación</li>
+                <li>Introducción al Desarrollo Web</li>
+            </ul>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Proyecto Integrador de Primer Nivel - PUCE TEC
+        </p>
+
+        <p>
+            Tecnología Superior en Desarrollo de Software
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
