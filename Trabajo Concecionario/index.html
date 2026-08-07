@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concesionaria de Autos de Lujo - Compra y Venta</title>
+    <!-- Librería SheetJS para manipular archivos .xlsx con múltiples hojas -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== PANTALLA DE LOGIN ==================== -->
+    <div id="pantallaLogin" class="login-box">
+        <h2>🔐 Iniciar Sesión</h2>
+        <form id="formLogin">
+            <div class="form-group">
+                <label>Usuario:</label>
+                <input type="text" id="loginUsuario" required placeholder="Usuario">
+            </div>
+            <div class="form-group">
+                <label>Contraseña:</label>
+                <input type="password" id="loginPassword" required placeholder="Contraseña">
+            </div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <div id="loginErrorMsg" class="login-error"></div>
+        </form>
+    </div>
+
+    <!-- ==================== APLICACIÓN PRINCIPAL (oculta hasta iniciar sesión) ==================== -->
+    <div id="pantallaApp" class="container" style="display:none;">
+
+        <div class="top-bar">
+            <div>
+                <h1>🚘 Concesionaria de Autos de Lujo</h1>
+                <p class="subtitle">Gestión de Clientes, Vendedores, Autos y Transacciones — persistencia en archivo Excel (.xlsx)</p>
+            </div>
+            <div>
+                <span id="usuarioActivo"></span>
+                <button id="btnLogout" class="btn btn-logout">Cerrar sesión</button>
+            </div>
+        </div>
+
+        <!-- Panel de Control de Archivo (File System API) -->
+        <div class="file-control-box">
+            <div id="fileStatusMsg" class="file-status">Estado: Ningún archivo vinculado. Carga uno existente o guarda uno nuevo.</div>
+            <div class="actions-bar">
+                <button id="btnCargar" class="btn btn-secondary">📂 Cargar Archivo Excel Existente</button>
+                <button id="btnGuardar" class="btn btn-success" disabled>💾 Guardar / Actualizar Excel (manual)</button>
+            </div>
+        </div>
+
+        <!-- Pestañas de la interfaz -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="appUI.cambiarPestana('clienteForm')">📝 Registrar Cliente</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('clientes')">👤 Hoja: Clientes (<span id="countClientes">0</span>)</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('vendedorForm')">📝 Registrar Vendedor</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('vendedores')">🧑‍💼 Hoja: Vendedores (<span id="countVendedores">0</span>)</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('autoForm')">📝 Registrar Auto</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('autos')">🚗 Hoja: Autos (<span id="countAutos">0</span>)</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('transaccionForm')">📝 Registrar Transacción</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('transacciones')">💰 Hoja: Transacciones (<span id="countTransacciones">0</span>)</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('repuestoForm')">📝 Registrar Repuesto</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('repuestos')">🧰 Hoja: Repuestos (<span id="countRepuestos">0</span>)</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('ventaRepuestoForm')">📝 Vender Repuesto</button>
+            <button class="tab-btn" onclick="appUI.cambiarPestana('ventasRepuestos')">🧾 Hoja: Ventas Repuestos (<span id="countVentasRepuestos">0</span>)</button>
+        </div>
+
+        <!-- PESTAÑA: FORMULARIO CLIENTE -->
+        <div id="seccion-clienteForm" class="sheet active">
+            <h3 id="clienteFormTitle">Nuevo Cliente</h3><br>
+            <form id="formCliente">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Apellidos:</label>
+                        <input type="text" id="clienteApellidos" required placeholder="Ej. Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres:</label>
+                        <input type="text" id="clienteNombres" required placeholder="Ej. Juan">
+                    </div>
+                    <div class="form-group">
+                        <label>Cédula:</label>
+                        <input type="text" id="clienteCedula" required placeholder="Ej. 1712345678">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="text" id="clienteTelefono" placeholder="Ej. 0991234567">
+                    </div>
+                    <div class="form-group full">
+                        <label>Email:</label>
+                        <input type="email" id="clienteEmail" placeholder="Ej. juan@mail.com">
+                    </div>
+                    <div class="form-group full">
+                        <label>Dirección:</label>
+                        <input type="text" id="clienteDireccion" placeholder="Ej. Av. Amazonas y Naciones Unidas">
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmitCliente" class="btn btn-primary">➕ Registrar Cliente</button>
+            </form>
+        </div>
+
+        <!-- PESTAÑA: TABLA CLIENTES -->
+        <div id="seccion-clientes" class="sheet">
+            <h3>Hoja: Clientes</h3>
+            <div class="table-container">
+                <table id="tablaClientes">
+                    <thead>
+                        <tr>
+                            <th>Apellidos</th>
+                            <th>Nombres</th>
+                            <th>Cédula</th>
+                            <th>Teléfono</th>
+                            <th>Email</th>
+                            <th>Dirección</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PESTAÑA: FORMULARIO VENDEDOR -->
+        <div id="seccion-vendedorForm" class="sheet">
+            <h3 id="vendedorFormTitle">Nuevo Vendedor</h3><br>
+            <form id="formVendedor">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Apellidos:</label>
+                        <input type="text" id="vendedorApellidos" required placeholder="Ej. Gómez">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres:</label>
+                        <input type="text" id="vendedorNombres" required placeholder="Ej. Ana">
+                    </div>
+                    <div class="form-group">
+                        <label>Cédula:</label>
+                        <input type="text" id="vendedorCedula" required placeholder="Ej. 1798765432">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono:</label>
+                        <input type="text" id="vendedorTelefono" placeholder="Ej. 0987654321">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="vendedorEmail" placeholder="Ej. ana@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Zona / Sucursal:</label>
+                        <input type="text" id="vendedorZona" placeholder="Ej. Norte, Sur, Centro">
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmitVendedor" class="btn btn-primary">➕ Registrar Vendedor</button>
+            </form>
+        </div>
+
+        <!-- PESTAÑA: TABLA VENDEDORES -->
+        <div id="seccion-vendedores" class="sheet">
+            <h3>Hoja: Vendedores</h3>
+            <div class="table-container">
+                <table id="tablaVendedores">
+                    <thead>
+                        <tr>
+                            <th>Apellidos</th>
+                            <th>Nombres</th>
+                            <th>Cédula</th>
+                            <th>Teléfono</th>
+                            <th>Email</th>
+                            <th>Zona</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PESTAÑA: FORMULARIO AUTO -->
+        <div id="seccion-autoForm" class="sheet">
+            <h3 id="autoFormTitle">Nuevo Auto</h3><br>
+            <form id="formAuto">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Marca:</label>
+                        <input type="text" id="autoMarca" required placeholder="Ej. Ferrari">
+                    </div>
+                    <div class="form-group">
+                        <label>Modelo:</label>
+                        <input type="text" id="autoModelo" required placeholder="Ej. 488 GTB">
+                    </div>
+                    <div class="form-group">
+                        <label>Año:</label>
+                        <input type="number" id="autoAnio" required placeholder="Ej. 2023" min="1980" max="2100">
+                    </div>
+                    <div class="form-group">
+                        <label>Placa:</label>
+                        <input type="text" id="autoPlaca" required placeholder="Ej. PBA-1234">
+                    </div>
+                    <div class="form-group">
+                        <label>Color:</label>
+                        <input type="text" id="autoColor" placeholder="Ej. Rojo">
+                    </div>
+                    <div class="form-group">
+                        <label>Precio (USD):</label>
+                        <input type="number" id="autoPrecio" required placeholder="Ej. 250000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group full">
+                        <label>Estado:</label>
+                        <select id="autoEstado" required>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Reservado">Reservado</option>
+                            <option value="Vendido">Vendido</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmitAuto" class="btn btn-primary">➕ Registrar Auto</button>
+            </form>
+        </div>
+
+        <!-- PESTAÑA: TABLA AUTOS -->
+        <div id="seccion-autos" class="sheet">
+            <h3>Hoja: Autos</h3>
+            <div class="table-container">
+                <table id="tablaAutos">
+                    <thead>
+                        <tr>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Año</th>
+                            <th>Placa</th>
+                            <th>Color</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PESTAÑA: FORMULARIO TRANSACCIÓN -->
+        <div id="seccion-transaccionForm" class="sheet">
+            <h3>Nueva Transacción (Compra o Venta)</h3><br>
+            <form id="formTransaccion">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Tipo de Transacción:</label>
+                        <select id="transaccionTipo" required>
+                            <option value="Venta">Venta (concesionaria vende el auto a un cliente)</option>
+                            <option value="Compra">Compra (concesionaria compra el auto a un cliente)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Placa del Auto:</label>
+                        <select id="transaccionPlacaAuto" required>
+                            <option value="">Seleccione un auto...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cliente (Cédula):</label>
+                        <select id="transaccionCliente" required>
+                            <option value="">Seleccione un cliente...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Vendedor a cargo (Cédula):</label>
+                        <select id="transaccionVendedor" required>
+                            <option value="">Seleccione un vendedor...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio Acordado (USD):</label>
+                        <input type="number" id="transaccionPrecio" required placeholder="Ej. 245000" min="0" step="0.01">
+                    </div>
+                    <div class="form-group full">
+                        <label>Fecha:</label>
+                        <input type="date" id="transaccionFecha" required>
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmitTransaccion" class="btn btn-primary">➕ Registrar Transacción</button>
+            </form>
+        </div>
+
+        <!-- PESTAÑA: TABLA TRANSACCIONES -->
+        <div id="seccion-transacciones" class="sheet">
+            <h3>Hoja: Transacciones</h3>
+            <div class="table-container">
+                <table id="tablaTransacciones">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Auto (Placa)</th>
+                            <th>Cliente</th>
+                            <th>Vendedor</th>
+                            <th>Precio</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PESTAÑA: FORMULARIO REPUESTO -->
+        <div id="seccion-repuestoForm" class="sheet">
+            <h3 id="repuestoFormTitle">Nuevo Repuesto</h3><br>
+            <form id="formRepuesto">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Nombre del Repuesto:</label>
+                        <input type="text" id="repuestoNombre" required placeholder="Ej. Plumas limpiaparabrisas delanteras">
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría:</label>
+                        <select id="repuestoCategoria" required>
+                            <option value="Plumas">Plumas (limpiaparabrisas)</option>
+                            <option value="Focos">Focos / Luces</option>
+                            <option value="Paños">Paños / Tapicería</option>
+                            <option value="Filtros">Filtros</option>
+                            <option value="Frenos">Frenos</option>
+                            <option value="Llantas">Llantas</option>
+                            <option value="Aceites">Aceites y Lubricantes</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Precio (USD):</label>
+                        <input type="number" id="repuestoPrecio" required placeholder="Ej. 25.50" min="0" step="0.01">
+                    </div>
+                    <div class="form-group full">
+                        <label>Stock disponible:</label>
+                        <input type="number" id="repuestoStock" required placeholder="Ej. 20" min="0">
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmitRepuesto" class="btn btn-primary">➕ Registrar Repuesto</button>
+            </form>
+        </div>
+
+        <!-- PESTAÑA: TABLA REPUESTOS -->
+        <div id="seccion-repuestos" class="sheet">
+            <h3>Hoja: Repuestos</h3>
+            <div class="table-container">
+                <table id="tablaRepuestos">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PESTAÑA: FORMULARIO VENTA DE REPUESTO -->
+        <div id="seccion-ventaRepuestoForm" class="sheet">
+            <h3>Nueva Venta de Repuesto</h3><br>
+            <form id="formVentaRepuesto">
+                <div class="form-grid">
+                    <div class="form-group full">
+                        <label>Repuesto:</label>
+                        <select id="ventaRepuestoNombre" required>
+                            <option value="">Seleccione un repuesto...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cantidad:</label>
+                        <input type="number" id="ventaRepuestoCantidad" required placeholder="Ej. 2" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Cliente (Cédula):</label>
+                        <select id="ventaRepuestoCliente" required>
+                            <option value="">Seleccione un cliente...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Vendedor a cargo (Cédula):</label>
+                        <select id="ventaRepuestoVendedor" required>
+                            <option value="">Seleccione un vendedor...</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label>Fecha:</label>
+                        <input type="date" id="ventaRepuestoFecha" required>
+                    </div>
+                </div>
+                <button type="submit" id="btnSubmitVentaRepuesto" class="btn btn-primary">➕ Registrar Venta</button>
+            </form>
+        </div>
+
+        <!-- PESTAÑA: TABLA VENTAS DE REPUESTOS -->
+        <div id="seccion-ventasRepuestos" class="sheet">
+            <h3>Hoja: Ventas de Repuestos</h3>
+            <div class="table-container">
+                <table id="tablaVentasRepuestos">
+                    <thead>
+                        <tr>
+                            <th>Repuesto</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Cliente</th>
+                            <th>Vendedor</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
