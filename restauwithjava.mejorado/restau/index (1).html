@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Zazu</title>
+    <link rel="stylesheet" href="stylomejor.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Bienvenidos al Restaurante Zazu</h1>
+
+        <nav>
+
+            <ul>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#menu-interactivo">Menú</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <section id="historia">
+
+        <h2>Nuestra Historia</h2>
+
+        <div class="slider">
+
+            <img src="imagenes/imagenes/imagen1.jpg" class="slide active" alt="Restaurante Zazu">
+            <img src="imagenes/imagenes/imagen3.jpg" class="slide" alt="Interior del restaurante">
+            <img src="imagenes/imagenes/imagen2.jpg" class="slide" alt="Comida del restaurante">
+
+            <div class="slide-buttons">
+
+                <button class="prev">Anterior</button>
+                <button class="next">Siguiente</button>
+
+            </div>
+
+        </div>
+
+
+        <div class="historia-texto">
+
+            <p>
+                Zazu es un restaurante creado para ofrecer a nuestros clientes
+                una experiencia agradable acompañada de buena comida.
+            </p>
+
+            <p>
+                Con el paso del tiempo, el restaurante ha recibido a diferentes
+                personas que disfrutan de nuestros platos y del ambiente del lugar.
+            </p>
+
+            <p>
+                Los años han pasado, pero Zazu mantiene la sazón y la atención
+                que caracteriza al restaurante.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section id="menu-interactivo">
+
+        <h2>Menú Interactivo</h2>
+
+        <div class="menu-boton">
+
+            <button onclick="abrirModal()">
+                Ver Menú Interactivo
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <div id="modalMenu" class="modal">
+
+        <div class="modal-content">
+
+            <span class="cerrar" onclick="cerrarModal()">X</span>
+
+            <h2>Menú Interactivo</h2>
+
+            <label for="tipoMenu">
+                Seleccione el menú:
+            </label>
+
+            <select id="tipoMenu" onchange="mostrarOpciones()">
+
+                <option value="">Seleccione una opción</option>
+                <option value="desayuno">Desayuno</option>
+                <option value="almuerzo">Almuerzo</option>
+                <option value="cena">Cena</option>
+
+            </select>
+
+
+            <div id="opcionesMenu">
+
+            </div>
+
+
+            <button onclick="confirmarPedido()">
+                Confirmar Pedido
+            </button>
+
+
+            <div id="resumenPedido">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section id="contacto">
+
+        <h2>Contáctanos</h2>
+
+        <div class="contacto-card">
+
+            <p>
+                Email:
+                <a href="mailto:contacto@restaurante.com">
+                    contacto@restaurante.com
+                </a>
+            </p>
+
+            <p>
+                Teléfono:
+                <a href="tel:0000000000">
+                    0000000000
+                </a>
+            </p>
+
+            <p>
+                Dirección: La Floresta, Quito
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
