@@ -121,3 +121,56 @@ function mostrarOpciones() {
     div.innerHTML = html;
 
 }
+
+
+function confirmarPedido() {
+
+    const plato = document.querySelector('input[name="plato"]:checked');
+
+    const bebidas = document.querySelector('input[name="bebida"]:checked');
+
+    const acompanamientos = document.querySelectorAll('input[name="acompanamiento"]:checked');
+
+    const resumen = document.getElementById('resumenPedido');
+
+
+    if (plato == null || bebidas == null) {
+
+        resumen.innerHTML = '<p>Seleccione un plato y una bebida.</p>';
+
+        return;
+
+    }
+
+
+    let textoAcompanamientos = '';
+
+    for (let i = 0; i < acompanamientos.length; i++) {
+
+        textoAcompanamientos += acompanamientos[i].value;
+
+        if (i < acompanamientos.length - 1) {
+
+            textoAcompanamientos += ', ';
+
+        }
+
+    }
+
+
+    if (textoAcompanamientos == '') {
+
+        textoAcompanamientos = 'Ninguno';
+
+    }
+
+
+    resumen.innerHTML =
+        '<h3>Resumen del pedido</h3>' +
+        '<p>Plato: ' + plato.value + '</p>' +
+        '<p>Acompañamientos: ' + textoAcompanamientos + '</p>' +
+        '<p>Bebida: ' + bebidas.value + '</p>';
+
+}
+
+
